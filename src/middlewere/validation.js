@@ -4,6 +4,7 @@ const { body, validationResult, buildCheckFunction } = require('express-validato
 const   validateRegistrationBody = () => {
     return [
       body('fullName')
+      .trim()
       .exists()
       .withMessage('name field is required')
       .isLength({min:3})
@@ -21,7 +22,9 @@ const   validateRegistrationBody = () => {
   }
   const   validateLoginBody = () => {
     return [
-      body('email').exists()
+      body('email')
+      .trim()
+      .exists()
       .withMessage('email field is required')
       .isEmail()
       .withMessage('Email is invalid'),

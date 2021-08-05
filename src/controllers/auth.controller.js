@@ -19,7 +19,6 @@ class Auth {
           email: req.body.email,
           password: req.body.password
         };
-
            await db.User.create(newUser).then((data) => {
         return res.json({ success: true, msg: 'Successful created new user.' });
       })
